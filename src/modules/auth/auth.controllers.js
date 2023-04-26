@@ -253,6 +253,8 @@ export const confirmEmail = async (req, res, next) => {
 //=========================== Login =============================
 export const login = async (req, res, next) => {
     const { email, password,type } = req.body;
+    const ipAddress = req.ip;
+    console.log({ipAddress});
     if(type === 'Doctor'){
         const Doctor = await DoctorModel.findOne({ email, isConfirmed: true })
         if (!Doctor) {
